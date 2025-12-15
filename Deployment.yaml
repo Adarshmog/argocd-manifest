@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo1
+  namespace: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+
+    spec:
+      containers:
+        - name: k8s
+          image: adarsh011/demo1
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: "256m"
+              memory: "250Mi"
+            limits:
+              cpu: "550m"
+              memory: "500Mi"
+
